@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Lab | Free AI Tools for Creators</title>
+    <meta name="description"
+        content="Official home of Local Lab. Free, offline, privacy-focused AI tools for YouTube creators.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --bg: #0f0f1a;
+            --card: #1a1a2e;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            background: #ea3636;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 100px 0 60px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Grid */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 60px 0 100px;
+        }
+
+        .app-card {
+            background: var(--card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+        }
+
+        .app-image {
+            height: 200px;
+            background: #252540;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .app-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .app-tag.coming-soon {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--muted);
+        }
+
+        .app-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .app-desc {
+            color: var(--muted);
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .app-btn {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            transition: background 0.2s;
+        }
+
+        .app-btn:hover {
+            background: #4f46e5;
+        }
+
+        .app-btn.disabled {
+            background: #333;
+            cursor: not-allowed;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <div class="logo">Local Lab</div>
+            <a href="https://www.youtube.com/@Locallab9" class="social-link" target="_blank">📺 Subscribe</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Free AI Tools</h1>
+            <p>Open source, privacy-focused, and 100% free tools for creators.</p>
+        </section>
+
+        <section class="apps-grid">
+            <!-- App 1: Voice Generator -->
+            <div class="app-card">
+                <div class="app-image">🎙️</div>
+                <div class="app-content">
+                    <div>
+                        <span class="app-tag">AVAILABLE NOW</span>
+                        <h2 class="app-title">Voice Generator</h2>
+                        <p class="app-desc">Professional AI text-to-speech with 20+ voices. Unlimited generation,
+                            offline privacy, and commercial use.</p>
+                    </div>
+                    <a href="https://sumithkumar07.github.io/Local-Lab-voice-generator/" class="app-btn">Get it Free</a>
+                </div>
+            </div>
+
+            <!-- App 2: Image Generator (Future) -->
+            <div class="app-card">
+                <div class="app-image">🎨</div>
+                <div class="app-content">
+                    <div>
+                        <span class="app-tag coming-soon">COMING SOON</span>
+                        <h2 class="app-title">Image Generator</h2>
+                        <p class="app-desc">Generate stunning thumbnails and art completely offline. No credits, no
+                            limits.</p>
+                    </div>
+                    <span class="app-btn disabled">Coming Soon</span>
+                </div>
+            </div>
+
+            <!-- App 3: Video Editor (Future) -->
+            <div class="app-card">
+                <div class="app-image">🎬</div>
+                <div class="app-content">
+                    <div>
+                        <span class="app-tag coming-soon">COMING SOON</span>
+                        <h2 class="app-title">Clip Editor</h2>
+                        <p class="app-desc">AI-powered video editing to slice, caption, and repurpose your content
+                            automatically.</p>
+                    </div>
+                    <span class="app-btn disabled">Coming Soon</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Local Lab. Building the future of open source creation.</p>
+    </footer>
+</body>
+
+</html>
