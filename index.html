@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* Modern Reset */
         * {
             margin: 0;
             padding: 0;
@@ -17,33 +18,63 @@
         }
 
         :root {
+            --bg: #030305;
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-hover: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
             --primary: #6366f1;
-            --bg: #0f0f1a;
-            --card: #1a1a2e;
-            --text: #e2e8f0;
-            --muted: #94a3b8;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background-color: var(--bg);
+            color: var(--text-main);
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            /* Subtle grid background */
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center top;
+        }
+
+        /* Ambient Glow */
+        .glow {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Header */
-        header {
-            padding: 25px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Navigation */
+        nav {
+            padding: 24px 0;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(3, 3, 5, 0.8);
+            border-bottom: 1px solid var(--border);
         }
 
-        .nav {
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -52,174 +83,275 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .social-link {
-            color: #fff;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
             text-decoration: none;
-            font-weight: 600;
-            background: #ea3636;
-            padding: 8px 16px;
-            border-radius: 8px;
         }
 
-        /* Hero */
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .subscribe-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .subscribe-btn:hover {
+            background: white;
+            color: black;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 100px 0 60px;
+            padding: 120px 0 80px;
+            position: relative;
         }
 
-        .hero h1 {
-            font-size: 4rem;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 99px;
+            color: #818cf8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            backdrop-filter: blur(4px);
+        }
+
+        h1 {
+            font-size: 5rem;
             font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #6366f1, #ec4899);
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.4rem;
-            color: var(--muted);
-            max-width: 600px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 640px;
             margin: 0 auto;
+            font-weight: 400;
         }
 
-        /* Grid */
-        .apps-grid {
+        /* Tools Grid */
+        .grid-section {
+            padding: 40px 0 120px;
+            flex: 1;
+        }
+
+        .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 60px 0 100px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
         }
 
-        .app-card {
-            background: var(--card);
-            border-radius: 20px;
+        .tool-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            group: hover;
             display: flex;
             flex-direction: column;
         }
 
-        .app-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
-            border-color: var(--primary);
+        .tool-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.3);
+            background: var(--surface-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .app-image {
-            height: 200px;
-            background: #252540;
+        /* Card Image Area */
+        .card-preview {
+            height: 240px;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1), transparent 70%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
         }
 
-        .app-content {
-            padding: 30px;
-            flex-grow: 1;
+        .card-preview::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Cpath d='M1 1h2v2H1V1zm4 0h2v2H5V1zm4 0h2v2H9V1zm4 0h2v2h-2V1zm4 0h2v2h-2V1zM1 5h2v2H1V5zm4 0h2v2H5V5zm4 0h2v2H9V5zm4 0h2v2h-2V5zm4 0h2v2h-2V5zM1 9h2v2H1V9zm4 0h2v2H5V9zm4 0h2v2H9V9zm4 0h2v2h-2V9zm4 0h2v2h-2V9zM1 13h2v2H1v-2zm4 0h2v2H5v-2zm4 0h2v2H9v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z' /%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .card-content {
+            padding: 32px;
+            flex: 1;
             display: flex;
             flex-direction: column;
         }
 
-        .app-tag {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.2);
-            color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .app-tag.coming-soon {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--muted);
-        }
-
-        .app-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        .tool-tag {
+            font-size: 0.75rem;
             font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #818cf8;
+            margin-bottom: 16px;
         }
 
-        .app-desc {
-            color: var(--muted);
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-
-        .app-btn {
-            background: var(--primary);
+        .tool-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
             color: white;
-            text-align: center;
-            padding: 12px;
-            border-radius: 10px;
+        }
+
+        .tool-desc {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+            flex: 1;
+        }
+
+        /* Primary Button Style */
+        .btn-primary {
+            background: white;
+            color: black;
             text-decoration: none;
-            font-weight: 600;
-            display: block;
-            transition: background 0.2s;
-        }
-
-        .app-btn:hover {
-            background: #4f46e5;
-        }
-
-        .app-btn.disabled {
-            background: #333;
-            cursor: not-allowed;
-            color: #666;
-        }
-
-        footer {
+            padding: 16px;
+            border-radius: 12px;
             text-align: center;
-            padding: 40px;
-            color: var(--muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: #e2e8f0;
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            background: rgba(3, 3, 5, 0.8);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="container nav">
-            <div class="logo">Local Lab</div>
-            <a href="https://www.youtube.com/@Locallab9" class="social-link" target="_blank">📺 Subscribe</a>
+    <div class="glow"></div>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="/" class="logo">
+                <div class="logo-icon">⚡</div>
+                Local Lab
+            </a>
+            <a href="https://www.youtube.com/@Locallab9" class="subscribe-btn" target="_blank">
+                📺 Subscribe
+            </a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <span class="badge">Open Source AI Tools</span>
+            <h1>Create without limits.</h1>
+            <p>Professional grade AI tools that run 100% offline on your PC.</p>
         </div>
     </header>
 
-    <div class="container">
-        <section class="hero">
-            <h1>Free AI Tools</h1>
-            <p>Open source, privacy-focused, and 100% free tools for creators.</p>
-        </section>
-
-        <section class="apps-grid">
-            <!-- App 1: Voice Generator -->
-            <div class="app-card">
-                <div class="app-image">🎙️</div>
-                <div class="app-content">
-                    <div>
-                        <span class="app-tag">AVAILABLE NOW</span>
-                        <h2 class="app-title">Voice Generator</h2>
-                        <p class="app-desc">Professional AI text-to-speech with 20+ voices. Unlimited generation,
-                            offline privacy, and commercial use.</p>
-                    </div>
-                    <a href="https://sumithkumar07.github.io/Local-Lab-voice-generator/" class="app-btn">Get it Free</a>
+    <main class="container grid-section">
+        <div class="tools-grid">
+            <!-- Voice Generator Card -->
+            <article class="tool-card">
+                <div class="card-preview">
+                    🎙️
                 </div>
-            </div>
-        </section>
-    </div>
+                <div class="card-content">
+                    <span class="tool-tag">Available Now</span>
+                    <h2 class="tool-title">Voice Generator</h2>
+                    <p class="tool-desc">
+                        Studio-quality text-to-speech engine.
+                        Includes 20+ voices. Unlimited generation.
+                        No internet required.
+                    </p>
+                    <!-- RELATIVE LINK FIX: Keeps user on custom domain -->
+                    <a href="/Local-Lab-voice-generator/" class="btn-primary">
+                        Get Started
+                        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- More tools can be added here seamlessly -->
+        </div>
+    </main>
 
     <footer>
-        <p>© 2026 Local Lab. Building the future of open source creation.</p>
+        <div class="container">
+            <p>&copy; 2026 Local Lab. Building the future of open source.</p>
+        </div>
     </footer>
 </body>
 
