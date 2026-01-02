@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Local Lab</title>
+    <meta name="description"
+        content="Local Lab is on a mission to democratize AI. Free, offline, and private tools for every creator.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Modern Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #030305;
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-hover: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
+            --primary: #6366f1;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: center top;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 24px 0;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(3, 3, 5, 0.8);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .subscribe-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid var(--border);
+        }
+
+        .subscribe-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        /* Content */
+        main {
+            padding: 80px 0;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mission-statement {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-weight: 300;
+            border-left: 4px solid #818cf8;
+            padding-left: 24px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 60px 0 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+        }
+
+        .profile-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .profile-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 2px solid var(--border);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        footer a {
+            color: #818cf8;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container nav-content">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <!-- Custom 'Circuit Cube' SVG Logo (Dark on White + Shadow) -->
+                    <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="cubeShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.3)" />
+                            </filter>
+                        </defs>
+                        <g filter="url(#cubeShadow)">
+                            <path d="M20 2L37.3205 12V32L20 42L2.67949 32V12L20 2Z" stroke="#0f172a" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M20 2V22 M20 22L37.3205 12 M20 22L2.67949 12" stroke="#0f172a" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M20 12L25 9M15 9L20 12" stroke="#0f172a" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="25" cy="9" r="1.5" fill="#0f172a" />
+                            <circle cx="15" cy="9" r="1.5" fill="#0f172a" />
+                            <path d="M28 17V22L32 24" stroke="#0f172a" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="32" cy="24" r="1.5" fill="#0f172a" />
+                            <path d="M8 24L12 22V17" stroke="#0f172a" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="8" cy="24" r="1.5" fill="#0f172a" />
+                        </g>
+                    </svg>
+                </div>
+                Local Lab
+            </a>
+            <div class="nav-links">
+                <a href="/" style="color:white; text-decoration:none; margin-right:20px; font-weight:500;">Home</a>
+                <a href="https://www.youtube.com/@Locallab9" class="subscribe-btn" target="_blank">📺 Subscribe</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>About Us</h1>
+
+        <p class="mission-statement">
+            "The future of AI isn't in the cloud—it's on your desk. We build free tools that give every creator the
+            power of Generative AI without subscriptions or spy-ware."
+        </p>
+
+        <h2>🚀 Our Mission</h2>
+        <p>Big tech companies want to rent you your own creativity for $20/month. We reject that.</p>
+        <p>Local Lab was founded on a simple belief: <strong>Computing power is cheap. Usage should be free.</strong> By
+            optimizing powerful open-source models to run on consumer hardware, we are putting production-grade AI tools
+            into the hands of everyone.</p>
+
+        <h2>👨‍💻 Meet the Developer</h2>
+        <div class="profile-card">
+            <div class="profile-icon">👨‍💻</div>
+            <div>
+                <h3 style="color:white; font-size:1.5rem; margin-bottom:8px;">Sumith Kumar</h3>
+                <p style="margin-bottom:12px; color:#818cf8; font-weight:600;">Founder & Lead Developer</p>
+                <p style="margin-bottom:0;">
+                    I'm a developer passionate about Open Source and demystifying AI. I started Local Lab to bridge the
+                    gap between complex research papers and easy-to-use tools. I build everything efficiently so it runs
+                    fast on your machine, not just high-end servers.
+                </p>
+            </div>
+        </div>
+
+        <h2>❤️ Join the Community</h2>
+        <p>We are just getting started. If you believe in privacy-first, subscription-free AI tools, the best way to
+            support the mission is to subscribe to the YouTube channel.</p>
+
+        <a href="https://www.youtube.com/@Locallab9" class="subscribe-btn"
+            style="display:inline-block; margin-top:20px;">
+            Visit YouTube Channel &rarr;
+        </a>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Local Lab. Open Source tools for creators.</p>
+            <div style="margin-top: 10px;">
+                <a href="/privacy.html">Privacy</a>
+                <a href="/about.html">About</a>
+                <a href="https://www.youtube.com/@Locallab9">YouTube</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
