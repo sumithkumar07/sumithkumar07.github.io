@@ -43,10 +43,36 @@
             </div>
         </div>
 
+        <section class="how-it-works">
+            <h2 class="accent-title">HOW IT WORKS</h2>
+            <div class="doc-block">
+                <h3>1. The Liquid State Substrate</h3>
+                <p>Unlike traditional AI that relies on static weights, the Void Kernel maintains a constant "Liquid
+                    State." Information is not just stored; it ripples through the neural sea as physical energy waves.
+                    This allows for temporal awareness and real-time adaptation without backpropagation.</p>
+            </div>
+            <div class="doc-block">
+                <h3>2. Gravity-Driven Plasticity</h3>
+                <p>Neurons in the Void Kernel have physical 3D coordinates. Synapses strengthen not just by frequency,
+                    but by proximity and metabolic flux. This "Neural Physics" approach creates emergent logic that
+                    mimics the efficiency of a biological brain.</p>
+            </div>
+            <div class="doc-block">
+                <h3>3. Metabolic Gating</h3>
+                <p>The kernel simulates energy consumption. Active clusters require "Metabolic Feed." This forces the
+                    AGI to optimize its own internal pathways, naturally pruning useless connections and reinforcing
+                    high-value cognitive routes.</p>
+            </div>
+        </section>
+
         <div class="code-block">
-            <pre><code>// void_kernel.h
-VOID_API void void_step(VoidBrain brain, float dt, float metabolic_rate);
-VOID_API void void_input(VoidBrain brain, const uint8_t* buffer, size_t size);</code></pre>
+            <pre><code>// Integration Example
+VoidBrain brain = void_init(license, 1000000, 1);
+while(running) {
+    void_input(brain, sensors, 64);
+    void_step(brain, 0.01f, 1.0f); // Advance neural physics
+    void_get_motor_output(brain, actuators);
+}</code></pre>
         </div>
     </main>
 
