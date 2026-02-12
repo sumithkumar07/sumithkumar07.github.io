@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Void Kernel Neural Visualization</title>
+    <style>
+        body {
+            margin: 0;
+            background: #050505;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create Neural Particles
+        const particleCount = 2000;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        for (let i = 0; i < particleCount; i++) {
+            // Sphere distribution
+            const r = 5 + Math.random() * 2;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+
+            positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+            positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+            positions[i * 3 + 2] = r * Math.cos(phi);
+
+            colors[i * 3] = 0.44; // #7000FF (Purple)
+            colors[i * 3 + 1] = 0.0;
+            colors[i * 3 + 2] = 1.0;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 0.05,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        // Create Synaptic Lines (Connecting close particles)
+        const lineMaterial = new THREE.LineBasicMaterial({ color: 0x7000FF, transparent: true, opacity: 0.15 });
+        const lineGeometry = new THREE.BufferGeometry();
+        const linePositions = [];
+
+        // Connect a subset for performance
+        for (let i = 0; i < 200; i++) {
+            const p1 = Math.floor(Math.random() * particleCount);
+            const p2 = Math.floor(Math.random() * particleCount);
+
+            linePositions.push(positions[p1 * 3], positions[p1 * 3 + 1], positions[p1 * 3 + 2]);
+            linePositions.push(positions[p2 * 3], positions[p2 * 3 + 1], positions[p2 * 3 + 2]);
+        }
+        lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+        const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
+        scene.add(lines);
+
+        camera.position.z = 15;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            points.rotation.y += 0.002;
+            points.rotation.x += 0.001;
+            lines.rotation.y += 0.002;
+            lines.rotation.x += 0.001;
+
+            // Pulsing effect
+            const time = Date.now() * 0.001;
+            points.scale.setScalar(1 + Math.sin(time) * 0.05);
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+
+</html>
