@@ -66,79 +66,32 @@
             color: #7000FF;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
-    <div id="canvas-container"></div>
+    <video id="v-bg" autoplay muted loop playsinline>
+        <source src="raw_proof.mp4" type="video/mp4">
+    </video>
 
     <div class="ui-overlay">
-        <h1>LIVE NEURAL TELEMETRY</h1>
-        <p>Simulation: VOID-KERNEL-1.0.4<br>State: Thinking...<br>Nodes: 1,000,000</p>
+        <h1>RAW NEURAL DATA: CASE-2026</h1>
+        <p>Simulation: VOID-KERNEL-1.0.4<br>Source: Local Lab Sovereign Host<br>Status: Authenticated</p>
     </div>
 
     <a href="index.html" class="back-btn">← Back to Terminal</a>
 
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('canvas-container').appendChild(renderer.domElement);
-
-        const particleCount = 2500;
-        const geometry = new THREE.BufferGeometry();
-        const pos = new Float32Array(particleCount * 3);
-        const colors = new Float32Array(particleCount * 3);
-
-        for (let i = 0; i < particleCount; i++) {
-            const r = 5 + Math.random() * 2;
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos(2 * Math.random() - 1);
-            pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-            pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-            pos[i * 3 + 2] = r * Math.cos(phi);
-
-            // Flickering neon colors
-            colors[i * 3] = 0.44;
-            colors[i * 3 + 1] = 0.0;
-            colors[i * 3 + 2] = 1.0;
+    <style>
+        #v-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.6) contrast(1.2);
         }
-
-        geometry.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-        const material = new THREE.PointsMaterial({
-            size: 0.06,
-            vertexColors: true,
-            transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending
-        });
-
-        const brain = new THREE.Points(geometry, material);
-        scene.add(brain);
-
-        camera.position.z = 15;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            brain.rotation.y += 0.002;
-            brain.rotation.z += 0.001;
-
-            const time = Date.now() * 0.001;
-            brain.scale.setScalar(1 + Math.sin(time * 2) * 0.03);
-
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
+    </style>
 </body>
 
 </html>
