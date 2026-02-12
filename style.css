@@ -70,6 +70,16 @@ nav {
     letter-spacing: 0.2rem;
     color: var(--accent);
     text-shadow: 0 0 10px var(--accent);
+    cursor: pointer;
+}
+
+.studio-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.1rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
 }
 
 .nav-links a {
